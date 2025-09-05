@@ -1,0 +1,7 @@
+pytest
+ipykernel
+sortedcontainers
+numpy
+bidict
+pandas
+mkdocs-material
