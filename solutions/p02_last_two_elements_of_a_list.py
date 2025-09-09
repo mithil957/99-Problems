@@ -12,4 +12,6 @@ def last_two_elements_of_a_list_v2[T](lst: list[T]) -> tuple[T, T] | None:
         case [] | [_]: return None
         case [a, b]: return (a, b)
         case _: return last_two_elements_of_a_list_v2(lst[1:])
-        
+
+def last_two_elements_of_a_list_v3[T](lst: list[T]) -> tuple[T, T] | None:
+    return (lst[-2], lst[-1]) if len(lst) >= 2 else None

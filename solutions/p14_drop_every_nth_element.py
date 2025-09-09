@@ -1,6 +1,7 @@
 # Drop every Nth element
 
 from functools import reduce
+from itertools import chain, compress, cycle
 
 def drop_every_nth_element_v1[T](lst: list[T], n: int) -> list[T]:
     if n == 0: 
@@ -22,8 +23,26 @@ def drop_every_nth_element_v2[T](lst: list[T], n: int) -> list[T]:
     
     generator_exp = (value 
                      for idx, value in enumerate(lst, 1)
-                     if idx % n != 0
-                     )
+                     if idx % n != 0)
     
     return list(generator_exp)
+
+
+def drop_every_nth_element_v3[T](lst: list[T], n: int) -> list[T]:
+    if n == 0:
+        return lst
     
+    step = n
+    return list(chain.from_iterable(
+        lst[idx: idx + step - 1] 
+        for idx in range(0, len(lst), step)
+    ))
+
+
+def drop_every_nth_element_v4[T](lst: list[T], n: int) -> list[T]:
+    if n == 0:
+        return lst
+    
+    mask = [True] * (n - 1) + [False]
+    repeated_mask = cycle(mask)
+    return list(compress(lst, repeated_mask))

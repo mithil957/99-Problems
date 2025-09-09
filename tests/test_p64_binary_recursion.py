@@ -15,7 +15,7 @@ def test_binary_recursion(solution):
         lambda state: state <= 1,
         lambda state: 1 if state == 1 else 0,
         lambda state: (state - 1, state - 2),
-        lambda _, res1, res2: res1 + res2
+        lambda res1, res2, _: res1 + res2
     ) == 8
 
     # Merge Sort
@@ -24,7 +24,7 @@ def test_binary_recursion(solution):
         lambda state: len(state) <= 1,
         lambda state: state,
         lambda state: (state[:len(state) // 2], state[len(state) // 2:]),
-        lambda _, res1, res2: list(merge(res1, res2))
+        lambda res1, res2, _: list(merge(res1, res2))
     ) == ['a', 'b', 'c', 'd', 'z']
 
     # Combinations
@@ -33,7 +33,7 @@ def test_binary_recursion(solution):
         head, *tail = choices
         return (tail, num_remaining - 1), (tail, num_remaining)
 
-    def combine(state, res1, res2):
+    def combine(res1, res2, state):
         head, *_ = state[0]
         combos_with_head = [(head,) + combo for combo in res1]
         combos_without_head = res2

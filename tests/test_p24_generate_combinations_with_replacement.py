@@ -3,8 +3,8 @@ from solutions.p24_generate_combinations_with_replacement import *
 from itertools import combinations_with_replacement
 
 
-implementations = [combinations_with_replacement_v1, combinations_with_replacement_v2, combinations_with_replacement_v3]
-ids = ["recursive/dfs", "bfs", "generator"]
+implementations = [combinations_with_replacement_v1, combinations_with_replacement_v2, combinations_with_replacement_v3, combinations_with_replacement_v4]
+ids = ["recursive/dfs", "bfs", "generator", "direct"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_combinations_with_replacement(solution):

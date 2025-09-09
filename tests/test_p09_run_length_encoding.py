@@ -6,7 +6,7 @@ implementations = [rle_encode_v1, rle_encode_v2, rle_encode_v3]
 ids = ["recursive", "reduce/fold", "direct"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
-def test_tail_of_list(solution):
+def test_run_length_encoding(solution):
     assert solution([]) == []
     assert solution([1]) == [(1, 1)]
     

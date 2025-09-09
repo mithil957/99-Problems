@@ -2,8 +2,8 @@ import pytest
 from solutions.p22_generate_combinations_from_list import *
 from itertools import combinations
 
-implementations = [generate_combinations_v1, generate_combinations_v2, generate_combinations_v3]
-ids = ["recursive/dfs", "bfs", "generator"]
+implementations = [generate_combinations_v1, generate_combinations_v2, generate_combinations_v3, generate_combinations_v4]
+ids = ["recursive/dfs", "bfs", "generator", 'direct']
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_generate_combinations(solution):

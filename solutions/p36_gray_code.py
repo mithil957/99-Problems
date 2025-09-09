@@ -15,4 +15,4 @@ def generate_gray_code_v1(bit_str_size: int) -> list[str]:
 
 def generate_gray_code_v2(bit_str_size: int) -> list[str]:
     return [(bin(i ^ (i >> 1))[2:]).rjust(bit_str_size, "0")
-            for i in range(2**bit_str_size)]
+             for i in range(2**bit_str_size)]

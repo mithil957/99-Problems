@@ -9,7 +9,7 @@ implementations = [eliminate_consecutive_duplicates_v1,
 ids = ["recursive", "iterative", 'direct']
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
-def test_tail_of_list(solution):
+def test_eliminate_duplicates(solution):
     assert solution([]) == []
     assert solution([1]) == [1]
     

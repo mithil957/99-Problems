@@ -6,7 +6,6 @@
 
 from __future__ import annotations
 from typing import Callable
-from dataclasses import dataclass
 
 type State[T] = T
 type Result[V] = V
@@ -15,7 +14,7 @@ def binary_recursion_v1(state: State,
                         at_base_case: Callable[[State], bool],
                         calculate_base_case: Callable[[State], Result],
                         transform: Callable[[State], tuple[State, State]],
-                        combine: Callable[[State, Result, Result], Result]) -> Result:
+                        combine: Callable[[Result, Result, State], Result]) -> Result:
     
     if at_base_case(state):
         return calculate_base_case(state)
@@ -30,4 +29,4 @@ def binary_recursion_v1(state: State,
                                         at_base_case, calculate_base_case,
                                         transform, combine)
     
-    return combine(state, result_from_1, result_from_2)
+    return combine(result_from_1, result_from_2, state)

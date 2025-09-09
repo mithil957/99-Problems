@@ -6,7 +6,8 @@
 
 
 from typing import Callable
-
+from solutions.p61_unfold import unfold_v2
+from solutions.p62_fold import fold_v3
 
 type State[T] = T
 type Result[V] = V
@@ -15,7 +16,7 @@ def linear_recursion_v1(state: State,
                         at_base_case: Callable[[State], bool],
                         calculate_base_case: Callable[[State], Result],
                         transform: Callable[[State], State],
-                        combine: Callable[[State, Result], Result]) -> Result:
+                        combine: Callable[[Result, State], Result]) -> Result:
     
     if at_base_case(state):
         return calculate_base_case(state)
@@ -26,14 +27,14 @@ def linear_recursion_v1(state: State,
                                            transform, 
                                            combine)
 
-    return combine(state, recursive_result)
+    return combine(recursive_result, state)
 
 
 def linear_recursion_v2(state: State,
                         at_base_case: Callable[[State], bool],
                         calculate_base_case: Callable[[State], Result],
                         transform: Callable[[State], State],
-                        combine: Callable[[State, Result], Result]) -> Result:
+                        combine: Callable[[Result, State], Result]) -> Result:
     
     stack = [state]
 
@@ -44,6 +45,17 @@ def linear_recursion_v2(state: State,
 
     while stack:
         last_state = stack.pop()
-        result = combine(last_state, result)
+        result = combine(result, last_state)
 
     return result
+
+
+def linear_recursion_v3(state: State,
+                        at_base_case: Callable[[State], bool],
+                        calculate_base_case: Callable[[State], Result],
+                        transform: Callable[[State], State],
+                        combine: Callable[[Result, State], Result]) -> Result:
+    
+    states = list(unfold_v2(state, transform, at_base_case))
+    base_value = calculate_base_case(states[-1])
+    return fold_v3(base_value, combine, reversed(states))

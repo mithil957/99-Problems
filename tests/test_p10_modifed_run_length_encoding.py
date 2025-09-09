@@ -6,7 +6,7 @@ implementations = [modded_rle_encode_v1, modded_rle_encode_v2]
 ids = ["4fun/dsl", "direct"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
-def test_tail_of_list(solution):
+def test_modifed_run_length_encoding(solution):
     assert solution([]) == []
     assert solution([1]) == [1]
     

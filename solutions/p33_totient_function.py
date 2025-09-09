@@ -6,7 +6,7 @@
 from math import gcd
 from functools import reduce
 from operator import mul
-from solutions.p33_prime_factor_multiplicity import prime_factor_counts_v2
+from solutions.p32_prime_factor_multiplicity import prime_factor_counts_v2
 
 def totient_fn_v1(m: int) -> int:
     if m == 1: return 1

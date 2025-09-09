@@ -1,8 +1,8 @@
 # Generate the combinations of K objects from the N elements of a list
 
 from collections import deque
-from collections.abc import Iterator
-
+from typing import Generator
+from itertools import combinations
 
 def generate_combinations_v1[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
     valid_selections = []
@@ -43,7 +43,7 @@ def generate_combinations_v2[T](lst: list[T], num_of_items: int) -> list[tuple[T
 
 
 def generate_combinations_v3[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
-    def combinations_iter(lst: list[T], num_of_items: int) -> Iterator[tuple[T]]:
+    def combinations_iter(lst: list[T], num_of_items: int) -> Generator[tuple[T]]:
         if len(lst) == 0 or num_of_items > len(lst):
             return
         
@@ -61,3 +61,7 @@ def generate_combinations_v3[T](lst: list[T], num_of_items: int) -> list[tuple[T
         yield from combinations_iter(tail, num_of_items)
     
     return list(combinations_iter(lst, num_of_items))
+
+
+def generate_combinations_v4[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
+    return list(combinations(lst, num_of_items))

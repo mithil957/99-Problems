@@ -37,7 +37,7 @@ class Node:
 
 type Tree = Node | None
 
-def generate_height_balanced_trees(nodes: int) -> list[Tree]:
+def generate_height_balanced_trees_given_nodes_v1(nodes: int) -> list[Tree]:
 
     @cache
     def minimum_nodes(height: int) -> int:

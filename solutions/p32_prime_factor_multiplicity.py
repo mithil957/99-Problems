@@ -4,7 +4,7 @@
 from math import isqrt
 from itertools import chain
 
-from solutions.p32_prime_factors import prime_factors_v3
+from solutions.p31_prime_factors import prime_factors_v4
 from solutions.p09_run_length_encoding import rle_encode_v3
 
 type FactorCount = tuple[int, int]
@@ -33,5 +33,5 @@ def prime_factor_counts_v1(target: int) -> list[FactorCount]:
 
 
 def prime_factor_counts_v2(m: int) -> list[FactorCount]:
-    factors = prime_factors_v3(m)
+    factors = prime_factors_v4(m)
     return rle_encode_v3(factors)

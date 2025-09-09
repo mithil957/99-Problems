@@ -23,7 +23,7 @@ def is_symmetric_tree_v1(tree: Tree) -> bool:
             return False
         case Branch(left_tree, right_tree):
             return is_symmetric_tree_v1(Branch(left_tree.left, right_tree.right)) and\
-                  is_symmetric_tree_v1(Branch(left_tree.right, right_tree.left))
+                   is_symmetric_tree_v1(Branch(left_tree.right, right_tree.left))
 
 
 def is_symmetric_tree_v2(tree: Tree) -> bool:

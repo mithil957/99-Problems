@@ -6,6 +6,14 @@
 # Canonical labelling maps a graph to its isomorphic class. Basically, we go through every permutation
 # of the nodes which is just swaps rows and cols. We turn the graph (represented as a matrix) into a number
 # and the canonical label of G is the highest number we got from all the permutations of G
+# In the worst case, we have to pay an N! penalty if the heuristics don't work. We also have to pay the
+# N! penalty is we BFS over the search space, finding the shortest path but at the cost of exploring all
+# paths. This is where graph invariants are useful. These invariants can be calculated in less than N! time,
+# so we can use them to decide if two graphs are NOT isomorphic. This will work with most graphs but what 
+# happens when the two graphs are very symmetrical with a slight difference. This means we would pay the cost
+# of running a list of invariants against these graphs where the invariants have an increasing cost in terms 
+# of time until we run out of invariants at some time? At this point, we end up having to pay the N! penalty.
+
 
 from __future__ import annotations
 from dataclasses import dataclass

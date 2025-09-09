@@ -1,6 +1,6 @@
 # RLE but for elements with 1 count just append the element only
 
-from dataclasses import dataclass
+from __future__ import annotations
 from functools import reduce
 from itertools import groupby
 
@@ -13,7 +13,7 @@ class RleList:
     def __init__(self, init_element: RleTerm):
         self.working_list = [init_element]
     
-    def __or__[T](self, value: T) -> 'RleList':
+    def __or__[T](self, value: T) -> RleList:
         match self.working_list[-1]:
             case (elem, count) if elem == value:
                 self.working_list[-1] = (elem, count + 1)

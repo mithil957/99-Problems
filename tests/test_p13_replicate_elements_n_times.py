@@ -1,8 +1,8 @@
 import pytest
 from solutions.p13_replicate_elements_n_times import *
 
-implementations = [replicate_elements_v1, replicate_elements_v2, replicate_elements_v3]
-ids = ["recursive", "reduce", "direct"]
+implementations = [replicate_elements_v1, replicate_elements_v2, replicate_elements_v3, replicate_elements_v4, replicate_elements_v5]
+ids = ["recursive", "chain/zip", "chain/repeat", "reduce", "list comprehension"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_replicate_elements(solution):

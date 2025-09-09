@@ -14,7 +14,7 @@ def duplicate_elements_v2[T](lst: list[T]) -> list[T]:
 
 
 def duplicate_elements_v3[T](lst: list[T]) -> list[T]:
-    return list(sum(chain(zip(lst, lst)), ()))
+    return list(chain(*zip(lst, lst)))
 
 
 def duplicate_elements_v4[T](lst: list[T]) -> list[T]:

@@ -24,7 +24,6 @@ def flatten_list_v2[T](lst: list[T]) -> list[T]:
     stack = [deepcopy(lst)]
 
     while stack:
-        print(stack)
         match stack[-1]:
             case []:
                 stack.pop()

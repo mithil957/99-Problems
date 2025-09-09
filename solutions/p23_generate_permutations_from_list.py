@@ -1,7 +1,8 @@
 # Generate the permutations of K objects from the N elements of a list
 
 from collections import deque
-from collections.abc import Iterator
+from typing import Generator
+from itertools import permutations, chain, islice
 
 
 def generate_permutations_v1[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
@@ -41,7 +42,7 @@ def generate_permutations_v2[T](lst: list[T], num_of_items: int) -> list[tuple[T
 
 
 def generate_permutations_v3[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
-    def permutations_iter(lst: list[T], num_of_items: int) -> Iterator[tuple[T]]:
+    def permutations_iter(lst: list[T], num_of_items: int) -> Generator[tuple[T]]:
         if len(lst) == 0 or num_of_items > len(lst):
             return
         
@@ -50,8 +51,11 @@ def generate_permutations_v3[T](lst: list[T], num_of_items: int) -> list[tuple[T
             return
 
         yield from ((val,) + perm
-                    for val in lst
-                    for perm in permutations_iter(set(lst) - {val}, num_of_items - 1))
+                    for idx, val in enumerate(lst)
+                    for perm in permutations_iter(lst[:idx] + lst[idx + 1:], num_of_items - 1))
     
     return list(permutations_iter(lst, num_of_items))
-        
+
+
+def generate_permutations_v4[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
+    return list(permutations(lst, num_of_items))

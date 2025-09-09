@@ -1,8 +1,8 @@
 import pytest
 from solutions.p16_extract_slice import *
 
-implementations = [extract_slice_v1, extract_slice_v2, extract_slice_v3]
-ids = ["recursive", "direct", "generator"]
+implementations = [extract_slice_v1, extract_slice_v2, extract_slice_v3, extract_slice_v4]
+ids = ["recursive", "direct", "generator", "mask"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_extract_slice(solution):

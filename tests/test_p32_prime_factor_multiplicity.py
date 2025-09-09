@@ -1,5 +1,5 @@
 import pytest
-from solutions.p33_prime_factor_multiplicity import *
+from problems_in_python.solutions.p32_prime_factor_multiplicity import *
 
 implementations = [prime_factor_counts_v1, prime_factor_counts_v2]
 ids = ["recursive", "compounding other solutions"]

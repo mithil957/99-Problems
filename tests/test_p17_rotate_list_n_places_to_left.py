@@ -1,8 +1,8 @@
 import pytest
 from solutions.p17_rotate_list_n_places_to_left import *
 
-implementations = [rotate_left_v1, rotate_left_v2, rotate_left_v3]
-ids = ["recursive", "direct", "chain"]
+implementations = [rotate_left_v1, rotate_left_v2, rotate_left_v3, rotate_left_v4]
+ids = ["recursive", "direct", "chain", "deque"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_rotate_left(solution):

@@ -2,7 +2,8 @@
 # Repeats are allowed
 
 from collections import deque
-from collections.abc import Iterator
+from typing import Generator
+from itertools import product
 
 
 def permutations_with_replacement_v1[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
@@ -44,7 +45,7 @@ def permutations_with_replacements_v2[T](lst: list[T], num_of_items: int) -> lis
 
 
 def permutations_with_replacements_v3[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
-    def permutations_iter(lst: list[T], num_of_items: int) -> Iterator[tuple[T]]:
+    def permutations_iter(lst: list[T], num_of_items: int) -> Generator[tuple[T]]:
         if len(lst) == 0:
             return
 
@@ -53,7 +54,11 @@ def permutations_with_replacements_v3[T](lst: list[T], num_of_items: int) -> lis
             return
 
         yield from ((val,) + perm
-                    for perm in permutations_iter(lst, num_of_items - 1)
-                    for val in lst)
+                    for val in lst
+                    for perm in permutations_iter(lst, num_of_items - 1))
     
     return list(permutations_iter(lst, num_of_items))
+
+
+def permutations_with_replacements_v4[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
+    return list(product(lst, repeat=num_of_items))

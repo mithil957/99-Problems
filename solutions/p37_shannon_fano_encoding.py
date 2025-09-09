@@ -12,7 +12,6 @@ from itertools import accumulate
 class Leaf:
     symbol: str
 
-
 @dataclass
 class Branch:
     left: Tree

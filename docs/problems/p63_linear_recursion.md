@@ -1,0 +1,113 @@
+---
+tags:
+    - Pattern
+    - Intermediate
+---
+
+# Linear Recursion
+
+Implement linear recursion which has 4 parts.
+
+A function __at_base_case__ which tells us if we reached the base case.
+
+A function __calulate_base_case__ which calculates the value when we reach the base case.
+
+A function __transform__ which we apply to state before the recursive call.
+
+A function __combine__ which combines the state with the result of the recursive call.
+
+
+=== "Test"
+    ```python
+    def test_linear_recursion(solution):
+        assert solution(
+            state = 5,
+            at_base_case = lambda state: state == 0,
+            calculate_base_case = lambda state: 1,
+            transform = lambda state: state - 1, 
+            combine = lambda rec_result, state: state * rec_result
+        ) == 120
+
+
+        assert solution(
+            state = [1, 1, 2, 2, 3, 4, 5, 5],
+            at_base_case = lambda state: len(state) < 1,
+            calculate_base_case = lambda state: state,
+            transform = lambda state: state[1:], 
+            combine = lambda rec_result, state: rec_result 
+                                                if len(rec_result) > 0 and state[0] == rec_result[0]
+                                                else [state[0]] + rec_result 
+        ) == [1, 2, 3, 4, 5]
+    ```
+
+=== "Recursive"
+    ```python
+    from typing import Callable
+
+    type State[T] = T
+    type Result[V] = V
+
+    def linear_recursion_v1(state: State,
+                            at_base_case: Callable[[State], bool],
+                            calculate_base_case: Callable[[State], Result],
+                            transform: Callable[[State], State],
+                            combine: Callable[[Result, State], Result]) -> Result:
+        
+        if at_base_case(state):
+            return calculate_base_case(state)
+        
+        recursive_result = linear_recursion_v1(transform(state), 
+                                               at_base_case, 
+                                               calculate_base_case, 
+                                               transform, 
+                                               combine)
+
+        return combine(recursive_result, state)
+    ```
+
+=== "Iterative"
+    ```python
+    from typing import Callable
+
+    type State[T] = T
+    type Result[V] = V
+
+    def linear_recursion_v2(state: State,
+                            at_base_case: Callable[[State], bool],
+                            calculate_base_case: Callable[[State], Result],
+                            transform: Callable[[State], State],
+                            combine: Callable[[Result, State], Result]) -> Result:
+    
+        stack = [state]
+
+        while not at_base_case((current_state := transform(stack[-1]))):
+            stack.append(current_state)
+
+        result = calculate_base_case(current_state)
+
+        while stack:
+            last_state = stack.pop()
+            result = combine(result, last_state)
+
+        return result
+    ```
+
+=== "Unfold then Fold"
+    ```python
+    from typing import Callable
+    from solutions.p61_unfold import unfold_v2
+    from solutions.p62_fold import fold_v3
+
+    type State[T] = T
+    type Result[V] = V
+
+    def linear_recursion_v3(state: State,
+                            at_base_case: Callable[[State], bool],
+                            calculate_base_case: Callable[[State], Result],
+                            transform: Callable[[State], State],
+                            combine: Callable[[Result, State], Result]) -> Result:
+    
+        states = list(unfold_v2(state, transform, at_base_case))
+        base_value = calculate_base_case(states[-1])
+        return fold_v3(base_value, combine, reversed(states))
+    ```

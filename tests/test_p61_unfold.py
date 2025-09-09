@@ -7,7 +7,7 @@ ids = ["recursive", "iterative"]
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_unfold(solution):
     assert list(solution(
-        5,
-        lambda x: x - 1,
-        lambda x: x == 0
+        seed = 5,
+        func = lambda x: x - 1,
+        stop_condition = lambda x: x == 0
     )) == [5, 4, 3, 2, 1]

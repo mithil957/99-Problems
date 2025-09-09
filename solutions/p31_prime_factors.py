@@ -3,8 +3,8 @@
 # appears before any composite number (C) that has P as a factor
 
 from math import isqrt
-from itertools import chain
-from collections.abc import Iterator
+from itertools import chain, cycle
+from typing import Generator
 
 def prime_factors_v1(m: int) -> list[int]:
     def aux(factors: list[int], curr_num: int, target: int) -> list[int]:
@@ -20,7 +20,7 @@ def prime_factors_v1(m: int) -> list[int]:
 
 
 def prime_factors_v2(m: int) -> list[int]:
-    def prime_factors_iter(target: int) -> Iterator[int]:
+    def prime_factors_iter(target: int) -> Generator[int]:
         if target <= 1:
             return
         
@@ -45,8 +45,28 @@ def prime_factors_v3(m: int) -> list[int]:
             factors.append(curr_num)
             m //= curr_num
     
-    if m != 1: return factors + [m]
-    else: return factors
+    if m != 1: factors.append(m)
+    return factors
 
 
+def prime_factors_v4(m: int) -> list[int]:
+    if m <= 1: return []
 
+    def tiny_wheel() -> Generator[int]:
+        candiate = 5
+        gap_cycle = cycle([2, 4])
+
+        while True:
+            yield candiate
+            candiate += next(gap_cycle)
+
+    factors = []
+    all_candiates = chain([2, 3], tiny_wheel())
+
+    while (curr_num := next(all_candiates)) <= isqrt(m):
+        while m % curr_num == 0:
+            factors.append(curr_num)
+            m //= curr_num
+    
+    if m != 1: factors.append(m)
+    return factors

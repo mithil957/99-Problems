@@ -1,8 +1,8 @@
 import pytest
 from solutions.p01_tail_of_list import *
 
-implementations = [tail_of_list]
-ids = ["pattern_matching"]
+implementations = [tail_of_list_v1, tail_of_list_v2, tail_of_list_v3]
+ids = ["pattern_matching", "recursive", "direct"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_tail_of_list(solution):

@@ -4,8 +4,8 @@
 
 from __future__ import annotations
 from dataclasses import dataclass
-from collections import namedtuple, deque
-from collections.abc import Iterator
+from collections import namedtuple
+from typing import Generator
 
 Edge = namedtuple('Edge', ['start', 'end'])
 
@@ -32,13 +32,13 @@ def find_paths_v1[T](graph: Graph, start: T, end: T) -> list[tuple[T]]:
 
 
 def find_paths_v2[T](graph: Graph, start: T, end: T) -> list[tuple[T]]:
-    def iter(curr_node: T, seen_nodes: set[T], curr_path: tuple[T]) -> Iterator[tuple[T]]:
+    def aux(curr_node: T, seen_nodes: set[T], curr_path: tuple[T]) -> Generator[tuple[T]]:
         if curr_node == end:
             yield curr_path
             return
         
         for edge in graph.edges:
             if edge.start == curr_node and edge.end not in seen_nodes:
-                yield from iter(edge.end, seen_nodes | {edge.end}, curr_path + (edge.end,))
+                yield from aux(edge.end, seen_nodes | {edge.end}, curr_path + (edge.end,))
     
-    return list(iter(start, {start}, (start,)))
+    return list(aux(start, {start}, (start,)))

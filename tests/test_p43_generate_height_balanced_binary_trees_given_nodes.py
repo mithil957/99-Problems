@@ -1,7 +1,7 @@
 import pytest
 from solutions.p43_generate_height_balanced_binary_trees_given_nodes import *
 
-implementations = [generate_height_balanced_trees]
+implementations = [generate_height_balanced_trees_given_nodes_v1]
 ids = ["recursive"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)

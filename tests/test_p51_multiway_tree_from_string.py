@@ -1,7 +1,7 @@
 import pytest
 from solutions.p51_multiway_tree_from_string import *
 
-implementations = [tree_to_string_v1]
+implementations = [string_to_tree_v1]
 ids = ["recursive"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)

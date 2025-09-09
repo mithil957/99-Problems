@@ -1,5 +1,5 @@
 import pytest
-from solutions.p31_totient_function import *
+from solutions.p33_totient_function import *
 
 implementations = [totient_fn_v1, totient_fn_v2]
 ids = ['direct', 'formula']

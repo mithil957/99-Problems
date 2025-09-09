@@ -2,7 +2,8 @@ import pytest
 from solutions.p21_extract_K_elements_randomly import *
 
 implementations = [extract_elements_v1, extract_elements_v2]
-ids = ["direct", "recursive"]
+ids = ["sample", "shuffle"]
+
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_extract_elements(solution):

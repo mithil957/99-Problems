@@ -1,0 +1,20 @@
+.md-typeset p {
+    font-size: 1.25em;
+    font-weight: 400;
+  }
+
+.md-typeset code {
+    font-size: 1.05em;
+    font-weight: 500;
+  }
+
+.md-sidebar--secondary:not([hidden]) {
+    display: none;
+}
+
+.md-typeset h1 {
+    color: grey;
+    font-weight: 400;
+}
+
+

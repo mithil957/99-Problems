@@ -1,8 +1,8 @@
 import pytest
 from solutions.p14_drop_every_nth_element import *
 
-implementations = [drop_every_nth_element_v1, drop_every_nth_element_v2]
-ids = ["reduce", "generator/filter"]
+implementations = [drop_every_nth_element_v1, drop_every_nth_element_v2, drop_every_nth_element_v3, drop_every_nth_element_v4]
+ids = ["reduce", "generator/filter", "chain", "mask"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_drop_every_nth_element(solution):

@@ -1,0 +1,135 @@
+site_name: 99* Python Problems
+site_description: A collection of problems approached with Python
+site_author: Mithil Viradia
+site_url: https://mydomain.org/mysite
+plugins:
+  - tags
+  - search
+theme:
+  font:
+    text: Lato
+    code: JetBrains Mono
+
+  palette:
+    - scheme: default
+      primary: amber
+      accent: blue
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    - scheme: slate
+      primary: amber
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  name: material
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - navigation.footer
+    - navigation.tabs.sticky
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - md_in_html
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.arithmatex:
+      generic: true
+
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 'Introduction': 'index.md'
+  - '01: Tail of a list': 'problems/p01_tail_of_list.md'
+  - '02: Last two elements': 'problems/p02_last_two_elements_of_a_list.md'
+  - '03: Nth element of list': 'problems/p03_nth_element_of_list.md'
+  - '04: Length of list': 'problems/p04_length_of_list.md'
+  - '05: Reverse a list': 'problems/p05_reverse_a_list.md'
+  - '06: Palindrome': 'problems/p06_palindrome.md'
+  - '07: Flatten a list': 'problems/p07_flatten_a_list.md'
+  - '08: Eliminate duplicates': 'problems/p08_eliminate_duplicates.md'
+  - '09: Run length encoding': 'problems/p09_run_length_encoding.md'
+  - '10: Modified run length encoding': 'problems/p10_modified_run_length_encoding.md'
+  - '11: Decode run length encoding': 'problems/p11_decode_run_length_encoding.md'
+  - '12: Duplicate the elements of a list': 'problems/p12_duplicate_the_elements_of_a_list.md'
+  - '13: Replicate elements n times': 'problems/p13_replicate_elements_n_times.md'
+  - '14: Drop every nth element': 'problems/p14_drop_every_nth_element.md'
+  - '15: Split list into two parts': 'problems/p15_split_list_into_two_parts.md'
+  - '16: Extract slice': 'problems/p16_extract_slice.md'
+  - '17: Rotate list n places to left': 'problems/p17_rotate_list_n_places_to_left.md'
+  - '18: Remove kth element': 'problems/p18_remove_kth_element.md'
+  - '19: Insert element at idx': 'problems/p19_insert_element_at_idx.md'
+  - '20: Create list given range': 'problems/p20_create_list_given_range.md'
+  - '21: Extract K elements randomly': 'problems/p21_extract_K_elements_randomly.md'
+  - '22: Generate combinations': 'problems/p22_generate_combinations_from_list.md'
+  - '23: Generate permutations': 'problems/p23_generate_permutations_from_list.md'
+  - '24: Generate combinations with replacement': 'problems/p24_generate_combinations_with_replacement.md'
+  - '25: Generate permutations with replacement': 'problems/p25_generate_permutations_with_replacement.md'
+  - '26: Ordered Partitions': 'problems/p26_group_set_into_disjoint_subsets.md'
+  - '27: Sort lists based on length': 'problems/p27_sort_lists_based_on_length.md'
+  - '28: Sort lists based on frequency of length': 'problems/p28_sort_lists_based_on_frequency_of_length.md'
+  - '29: Is prime': 'problems/p29_is_prime.md'
+  - '30: GCD': 'problems/p30_gcd.md'
+  - '31: Prime factors': 'problems/p31_prime_factors.md'
+  - '32: Prime factor multiplicity': 'problems/p32_prime_factor_multiplicity.md'
+  - '33: Totient function': 'problems/p33_totient_function.md'
+  - '34: Goldbach conjecture': 'problems/p34_goldbach_conjecture.md'
+  - '35: Calculate truth table': 'problems/p35_calculate_truth_table.md'
+  - '36: Gray code': 'problems/p36_gray_code.md'
+  - '37: Shannon-Fano encoding': 'problems/p37_shannon_fano_encoding.md'
+  - '38: Huffman encoding': 'problems/p38_huffman_encoding.md'
+  - '39: Generate completely balanced binary trees': 'problems/p39_generate_completely_balanced_binary_trees.md'
+  - '40: Symmetric binary trees': 'problems/p40_symmetric_binary_trees.md'
+  - '41: Binary Search Tree': 'problems/p41_bst.md'
+  - '42: Generate height balanced binary trees': 'problems/p42_generate_height_balanced_binary_trees.md'
+  - '43: Generate height balanced binary trees given nodes': 'problems/p43_generate_height_balanced_binary_trees_given_nodes.md'
+  - '44: Generate complete binary tree': 'problems/p44_generate_complete_binary_tree.md'
+  - '45: String representation of binary trees': 'problems/p45_string_representation_of_binary_trees.md'
+  - '46: String to tree': 'problems/p46_string_to_tree.md'
+  - '47: Preorder tree traversal': 'problems/p47_preorder_tree_traversal.md'
+  - '48: Inorder tree traversal': 'problems/p48_inorder_tree_traversal.md'
+  - '49: Tree from inorder & preorder sequence': 'problems/p49_tree_from_inorder_preorder_sequence.md'
+  - '50: Multiway tree to string': 'problems/p50_multiway_tree_to_string.md'
+  - '51: Multiway tree from string': 'problems/p51_multiway_tree_from_string.md'
+  - '52: Lispy tree representation': 'problems/p52_lispy_tree_representation.md'
+  - '53: Path from one node to another': 'problems/p53_path_from_one_node_to_another.md'
+  - '54: Generate spanning trees': 'problems/p54_generate_spanning_trees.md'
+  - '55: Find minimal spanning tree': 'problems/p55_find_minimal_spanning_tree.md'
+  - '56: Graph isomorphism': 'problems/p56_graph_isomorphism.md'
+  - '57: Graph coloring': 'problems/p57_graph_coloring.md'
+  - '58: Connected components': 'problems/p58_connected_components.md'
+  - '59: Is bipartite': 'problems/p59_is_bipartite.md'
+  - '60: Find non isomorphic k regular graphs': 'problems/p60_find_non_isomorphic_k_regular_graphs.md'
+  - '61: Unfold': 'problems/p61_unfold.md'
+  - '62: Fold': 'problems/p62_fold.md'
+  - '63: Linear recursion': 'problems/p63_linear_recursion.md'
+  - '64: Binary recursion': 'problems/p64_binary_recursion.md'
+  - '65: Nary recursion': 'problems/p65_nary_recursion.md'
+  
+  
+
+    

@@ -1,4 +1,4 @@
-# From a preorder tree traversal sequence, generate a tree T
+# From a preorder and inorder tree traversal sequence, generate a tree T
 # *Learning - Didn't get the answer for this, look for a lesson here, there is one
 
 from solutions.p46_string_to_tree import *

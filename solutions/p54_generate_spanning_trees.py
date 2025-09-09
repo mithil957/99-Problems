@@ -1,5 +1,5 @@
 # Generate all the spanning trees of a given graph G
-# A spanning tree is a contains all the nodes of G and a minimal set of edges from G w/o creating cycles 
+# A spanning tree contains all the nodes of G and a minimal set of edges from G w/o creating cycles 
 # The set of all spanning trees for G is the union of two sets. The set containing all spanning trees which
 # include an edge Ei from G and the set containing all spanning trees that don't include edge Ei from G
 # This becomes a combination problem where the objects we are picking are edges from G
@@ -7,7 +7,7 @@
 # We can't have cycles o/w it wouldn't be a tree. We must connect all the nodes of G
 # Learning - Use Disjoint Set Union and Matrix Tree Theorm is a very interesting way to
 # calculate the number of spanning trees for G. If we pick edges such that they don't create loops
-# we are guarnatted a spanning tree after picking N - 1 edges where V is the number of nodes in G
+# we are guaranteed a spanning tree after picking N - 1 edges where V is the number of nodes in G
 
 from __future__ import annotations
 from dataclasses import dataclass, field
@@ -22,7 +22,7 @@ class Graph[T]:
     nodes: list[T]
     edges: list[Edge]
 
-Merges = namedtuple('Merged', ['index_start', 'index_end', 'popped_values'])
+Merges = namedtuple('Merges', ['index_start', 'index_end', 'popped_values'])
 
 @dataclass
 class EdgeSet[T]:

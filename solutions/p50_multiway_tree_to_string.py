@@ -2,7 +2,7 @@
 # The nodes contain a single characters. A special characer ^ has
 # been inserted during depth-first order traversal. ^ means to backtrack
 # to the previous level
-# Ex. afg^^c^ represents the multiway tree MT
+# Ex. afg^^c^^ represents the multiway tree MT
 #     MT → T(a, {T(f, {T(g, {∅})}), T(c, {∅})})
 
 

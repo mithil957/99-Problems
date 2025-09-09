@@ -1,8 +1,8 @@
 import pytest
 from solutions.p15_split_list_into_two_parts import *
 
-implementations = [split_list_v1, split_list_v2, split_list_v3]
-ids = ["recursive", "direct", "iterative"]
+implementations = [split_list_v1, split_list_v2, split_list_v3, split_list_v4, split_list_v5]
+ids = ["recursive", "slice", "iterative", "islice", "deque"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_split_list(solution):

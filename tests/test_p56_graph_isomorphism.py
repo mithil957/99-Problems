@@ -36,12 +36,12 @@ def test_isomorphic_graphs(solution):
     
     assert len(mappings) == 8
     
-    expected_mapping = bidict({
+    expected_mapping = {
         Node(1): Node('A'),
         Node(2): Node('B'),
         Node(3): Node('C'),
         Node(4): Node('D')
-    })
+    }
     assert expected_mapping in mappings
 
 

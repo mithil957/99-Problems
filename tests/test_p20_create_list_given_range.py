@@ -1,8 +1,8 @@
 import pytest
 from solutions.p20_create_list_given_range import *
 
-implementations = [create_range_v1, create_range_v2]
-ids = ["recursive", "direct"]
+implementations = [create_range_v1, create_range_v2, create_range_v3]
+ids = ["recursive", "direct", "itertools"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
 def test_create_range(solution):

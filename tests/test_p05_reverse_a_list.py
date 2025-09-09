@@ -1,11 +1,11 @@
 import pytest
 from solutions.p05_reverse_a_list import *
 
-implementations = [reverse_list_v1, reverse_list_v2]
-ids = ["direct", "recursive"]
+implementations = [reverse_list_v1, reverse_list_v2, reverse_list_v3]
+ids = ["direct", "recursive", "tail recursive"]
 
 @pytest.mark.parametrize("solution", implementations, ids=ids)
-def test_tail_of_list(solution):
+def test_reverse_a_list(solution):
     assert solution([]) == []
     assert solution([1]) == [1]
     assert solution([1, 2, 3]) == [3, 2, 1]

@@ -1,5 +1,6 @@
-# Given a run-length code list, construct its uncomprssed version
-from functools import reduce
+# Given a run-length code list, construct its uncompressed version
+
+from typing import Generator
 
 type RleTerm[T] = tuple[T, int] | T 
 
@@ -14,9 +15,10 @@ def decode_rle_list_v1[T](rle_lst: list[RleTerm]) -> list[T]:
 
 
 def decode_rle_list_v2[T](rle_lst: list[RleTerm]) -> list[T]:
-    def aux(term: RleTerm) -> list[T]:
-        match term:
-            case (element, count): return [element] * count
-            case element: return [element]
+    def aux() -> Generator[T]:
+        for term in rle_lst:
+            match term:
+                case (element, count): yield from (element for _ in range(count))
+                case element: yield element
     
-    return sum(map(aux, rle_lst), [])
+    return list(aux())

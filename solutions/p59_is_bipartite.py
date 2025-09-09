@@ -65,11 +65,3 @@ def is_bipartite_v1(graph: Graph) -> bool:
     lookup_g = graph.get_adacencey_form()
     coloring = jump_and_color({})
     return coloring is not None
-
-
-    
-    
-
-    
-
-        

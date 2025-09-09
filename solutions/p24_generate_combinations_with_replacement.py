@@ -2,7 +2,8 @@
 # Repeats are allowed
 
 from collections import deque
-from collections.abc import Iterator
+from typing import Generator
+from itertools import combinations_with_replacement
 
 def combinations_with_replacement_v1[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
     if num_of_items == 0: return [()]
@@ -41,7 +42,7 @@ def combinations_with_replacement_v2[T](lst: list[T], num_of_items: int) -> list
 
 
 def combinations_with_replacement_v3[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
-    def combinations_iter(lst: list[T], num_of_items: int) -> Iterator[tuple[T]]:
+    def combinations_iter(lst: list[T], num_of_items: int) -> Generator[tuple[T]]:
         if len(lst) == 0:
             return
         
@@ -54,3 +55,7 @@ def combinations_with_replacement_v3[T](lst: list[T], num_of_items: int) -> list
         yield from combinations_iter(tail, num_of_items)
     
     return list(combinations_iter(lst, num_of_items))
+
+
+def combinations_with_replacement_v4[T](lst: list[T], num_of_items: int) -> list[tuple[T]]:
+    return list(combinations_with_replacement(lst, num_of_items))

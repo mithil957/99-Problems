@@ -3,7 +3,7 @@
 
 from solutions.p50_multiway_tree_to_string import *
 
-def tree_to_string_v1(tree_str: str) -> Tree | None:
+def string_to_tree_v1(tree_str: str) -> Tree | None:
     def parse_node(idx: int) -> tuple[Tree, int]:
         val = tree_str[idx]
         children, final_idx = parse_children(idx + 1)
